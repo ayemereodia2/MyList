@@ -13,3 +13,10 @@ struct UserTask:Equatable {
     let taskName:String
     let isTaskDone:Bool
 }
+
+extension UserTask {
+    init?(entity:UserTaskEntity) {
+        taskName = entity.taskName ?? "" 
+        isTaskDone = entity.isTaskDone 
+    }
+}

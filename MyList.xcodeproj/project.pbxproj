@@ -26,6 +26,7 @@
 		0427D1FA24B7BE1C00B93FEA /* DataStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427D1F924B7BE1C00B93FEA /* DataStorageProtocol.swift */; };
 		0427D1FD24B7BE8500B93FEA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427D1FC24B7BE8500B93FEA /* CoreDataManager.swift */; };
 		0427D20024B7C65200B93FEA /* UserTaskEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427D1FF24B7C65200B93FEA /* UserTaskEntity+Mapping.swift */; };
+		0427D20224BDAEC300B93FEA /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427D20124BDAEC300B93FEA /* CoreDataManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		0427D1F924B7BE1C00B93FEA /* DataStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageProtocol.swift; sourceTree = "<group>"; };
 		0427D1FC24B7BE8500B93FEA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0427D1FF24B7C65200B93FEA /* UserTaskEntity+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserTaskEntity+Mapping.swift"; sourceTree = "<group>"; };
+		0427D20124BDAEC300B93FEA /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			children = (
 				0427D1AD24B4A5F100B93FEA /* Info.plist */,
 				0427D1E824B795D800B93FEA /* PersistentStorageTests.swift */,
+				0427D20124BDAEC300B93FEA /* CoreDataManagerTests.swift */,
 			);
 			path = MyListTests;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0427D20224BDAEC300B93FEA /* CoreDataManagerTests.swift in Sources */,
 				0427D1E924B795D800B93FEA /* PersistentStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

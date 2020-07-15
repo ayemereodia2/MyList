@@ -16,8 +16,14 @@ final class CoreDataPersistentStorage {
         self.coreDataStorage = coreDataStorage
     }
     
-    func addTaskUseCase(newUseCase:UserTask,completionHandler: @escaping (Result<UserTask, Error>)->Void){
+    func addTaskUseCase(newUseCase:UserTask,completionHandler: @escaping (UserTask?, CoreDataStorageError?)->Void){
         
         coreDataStorage.addTaskUseCase(newUseCase: newUseCase, completionHandler: completionHandler)
     }
+    
+    func getSavedTasks(completionHandler:@escaping([UserTask]?)->Void){
+        
+        coreDataStorage.getAllTask(completionHandler: completionHandler)
+    }
+
 }

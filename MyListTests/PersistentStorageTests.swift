@@ -27,8 +27,8 @@ class PersistentStorageTests: XCTestCase {
         let coreDataMan = CoreDataManager()
         let sut = CoreDataPersistentStorage(coreDataStorage: coreDataMan)
         // Act
-        sut.addTaskUseCase(newUseCase:newTask){ result in
-            if case .success(let data) = result {
+        sut.addTaskUseCase(newUseCase:newTask){response,_ in
+            if let data = response {
                 XCTAssertNotNil(data)
                 expectation.fulfill()
             }
@@ -37,5 +37,21 @@ class PersistentStorageTests: XCTestCase {
         self.wait(for: [expectation], timeout: 5)
     }
     
+    
+    func testCoreDataPersistentStorage_WhenGetTaskisCalled_ShouldReturnValuesCountGreaterThan0(){
+        // Arrange
+        let coreDataMan = CoreDataManager()
+        let sut = CoreDataPersistentStorage(coreDataStorage: coreDataMan)
+        let expectation = self.expectation(description: "expected task count must be greater than 0")
+        // Act
+        sut.getSavedTasks(){tasks in 
+            if let tasks = tasks {
+                XCTAssertTrue(tasks.count > 0)
+                expectation.fulfill()
+            }
+        }
+        
+        self.wait(for: [expectation], timeout: 5)
+    }
 
 }

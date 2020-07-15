@@ -9,6 +9,8 @@
 import Foundation
 
 protocol DataStorageProtocol {
-    func addTaskUseCase(newUseCase:UserTask, completionHandler:@escaping (Result<UserTask, Error>)->Void)
+    func addTaskUseCase(newUseCase:UserTask, completionHandler:@escaping (UserTask?, CoreDataStorageError?)->Void)
+    
+    func getAllTask(completionHandler: @escaping([UserTask]?)->Void)
     
 }
