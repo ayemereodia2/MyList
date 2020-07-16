@@ -1,5 +1,5 @@
 //
-//  DataStorageProtocol.swift
+//  ManageTaskProtocol.swift
 //  MyList
 //
 //  Created by Ayemere  Odia  on 09/07/2020.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-protocol DataStorageProtocol {
+protocol UserTaskRepository {
+    
     func addTaskUseCase(newUseCase:UserTask, completionHandler:@escaping (UserTask?, CoreDataStorageError?)->Void)
     
     func getAllTask(completionHandler: @escaping([UserTask]?)->Void)
-    
 }

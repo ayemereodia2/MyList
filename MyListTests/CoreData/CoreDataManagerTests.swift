@@ -24,7 +24,7 @@ class CoreDataManagerTests: XCTestCase {
 
     func testCoreDataManager_WhenValidDataIsPassed_ShouldReturnExpectedTaskName(){
         // Arrange
-        let validTask = UserTask(taskName: "Task Test 4", isTaskDone: false)
+        let validTask = UserTask(taskName: "Going for coffee", isTaskDone: false)
 
          sut = CoreDataManager()
         let expectation = self.expectation(description: "expected to save new valid user tast")
@@ -32,7 +32,7 @@ class CoreDataManagerTests: XCTestCase {
         sut.addTaskUseCase(newUseCase: validTask){ response, _ in
             if let result = response {
                 
-                XCTAssertEqual(result.taskName, "Task Test 4")
+                XCTAssertEqual(result.taskName, "Going for coffee")
                 expectation.fulfill()
             }
         }

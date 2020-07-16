@@ -10,9 +10,9 @@ import Foundation
 
 final class CoreDataPersistentStorage {
     
-    private var coreDataStorage:DataStorageProtocol
+    private var coreDataStorage:UserTaskRepository
     
-    init(coreDataStorage:DataStorageProtocol) {
+    init(coreDataStorage:UserTaskRepository) {
         self.coreDataStorage = coreDataStorage
     }
     
