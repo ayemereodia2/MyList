@@ -24,7 +24,8 @@ class CoreDataManagerTests: XCTestCase {
 
     func testCoreDataManager_WhenValidDataIsPassed_ShouldReturnExpectedTaskName(){
         // Arrange
-        let validTask = UserTask(taskName: "Going for coffee", isTaskDone: false)
+        let validTask = UserTask(taskName: "Going for coffee", isTaskDone: false, createdAt: Date())
+        print(Date())
 
          sut = CoreDataManager()
         let expectation = self.expectation(description: "expected to save new valid user tast")
@@ -43,7 +44,7 @@ class CoreDataManagerTests: XCTestCase {
     
     func testCoreDataManager_WhenInvalidDataIsPassed_ShouldReturnExpectedError(){
         // Arrange 
-        let invalidTask = UserTask(taskName: "@ night", isTaskDone: false)
+        let invalidTask = UserTask(taskName: "@ night", isTaskDone: false, createdAt: Date())
         let expectedError = "Invalid Task Name"
         let expectation = self.expectation(description: "expected to return valid error")
         

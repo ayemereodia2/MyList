@@ -18,8 +18,8 @@ class ManageTaskUseCaseTests: XCTestCase {
         
     }
     static let userTaskStubs:[UserTask] = {
-       let task1 = UserTask(taskName: "Buy Food", isTaskDone: false)
-        let task2 = UserTask(taskName: "Build first case", isTaskDone: false) 
+        let task1 = UserTask(taskName: "Buy Food", isTaskDone: false,createdAt: Date())
+        let task2 = UserTask(taskName: "Build first case", isTaskDone: false, createdAt: Date()) 
 
         return [task1, task2]
     }()
@@ -28,6 +28,8 @@ class ManageTaskUseCaseTests: XCTestCase {
         var result:UserTask?
         var error:CoreDataStorageError?
         var isError:Bool = false
+        var stubTask:[UserTask]?
+        
         func addTaskUseCase(newUseCase: UserTask, completionHandler: @escaping (UserTask?, CoreDataStorageError?) -> Void) {
             
             if isError {
@@ -39,7 +41,7 @@ class ManageTaskUseCaseTests: XCTestCase {
         }
         
         func getAllTask(completionHandler: @escaping ([UserTask]?) -> Void) {
-            
+            completionHandler(stubTask)
         }
         
         
@@ -55,7 +57,7 @@ class ManageTaskUseCaseTests: XCTestCase {
         sut.create(newTask: ManageTaskUseCaseTests.userTaskStubs[0]) { (result) in
             
             if case .success(let data) = result {
-                XCTAssertEqual(data?.taskName, "Buy Food")
+                XCTAssertEqual(data?.taskName, "Buy Food", "incorrect user-task name was returned")
                 expectation.fulfill()
             }
             
@@ -69,18 +71,35 @@ class ManageTaskUseCaseTests: XCTestCase {
         // Arrange
         let sut = DefaultManageTaskUseCase(taskRepository: UserTaskRepositoryMock(result: nil, error: CoreDataStorageError.newTaskError(description: "Error occured"), isError: true))
         
-        let expectation = self.expectation(description: "should return same DTO")
+        let expectation = self.expectation(description: "should return correct error")
         
         // Act
         sut.create(newTask: ManageTaskUseCaseTests.userTaskStubs[0]) { (result) in
             
             if case .failure(let error) = result {
-                XCTAssertEqual(error.localizedDescription, "an error occured")
+                XCTAssertEqual(error.localizedDescription, "an error occured", "you returned an incorrect error message")
                 expectation.fulfill()
             }
             
         }
             
+        self.wait(for: [expectation], timeout: 5)
+    }
+    
+    func testManageTaskCase_WhenGetAllMethodCalled_ShouldReturnUserTasksGreaterThan0(){
+        // Arrange
+        let sut = DefaultManageTaskUseCase(taskRepository: UserTaskRepositoryMock(result: nil, stubTask:ManageTaskUseCaseTests.userTaskStubs ))
+        let expectation = self.expectation(description: "expected to return all created user-task")
+        
+        // Act
+        sut.fetchAllUserTask(){allTask in
+            
+            if let task = allTask {
+                XCTAssertEqual(task[0].taskName, "Buy Food")
+                expectation.fulfill()
+            }
+        }
+        
         self.wait(for: [expectation], timeout: 5)
     }
 }

@@ -79,9 +79,10 @@ class CoreDataManager: UserTaskRepository {
         
         let request:NSFetchRequest<UserTaskEntity> = UserTaskEntity.fetchRequest()
 
-        request.predicate = NSPredicate(format: "%K = %@ AND %K = %d",
-                                        #keyPath(UserTaskEntity.taskName), task.taskName ?? "xc827vc",
-                                        #keyPath(UserTaskEntity.isTaskDone), task.isTaskDone)
+        request.predicate = NSPredicate(format: "%K = %@ AND %K = %d AND %K = %@",
+                                        #keyPath(UserTaskEntity.taskName), task.taskName,
+                                        #keyPath(UserTaskEntity.isTaskDone), task.isTaskDone, #keyPath(UserTaskEntity.createdAt),
+        task.createdAt as NSDate)
         return request
     }
     

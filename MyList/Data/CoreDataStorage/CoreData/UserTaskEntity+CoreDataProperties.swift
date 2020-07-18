@@ -17,7 +17,8 @@ extension UserTaskEntity {
         return NSFetchRequest<UserTaskEntity>(entityName: "UserTaskEntity")
     }
 
-    @NSManaged public var taskName: String?
+    @NSManaged public var taskName: String
     @NSManaged public var isTaskDone: Bool
+    @NSManaged public var createdAt : Date
 
 }

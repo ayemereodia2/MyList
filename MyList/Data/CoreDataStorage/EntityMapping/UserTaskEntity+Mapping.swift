@@ -14,12 +14,13 @@ extension UserTaskEntity {
            self.init(context: context)
         taskName = userTaskQuery.taskName
         isTaskDone = userTaskQuery.isTaskDone
+        createdAt = userTaskQuery.createdAt
         
        }
 }
 
 extension UserTaskEntity {
     func toDomain() -> UserTask {
-        return .init(taskName: taskName ?? "", isTaskDone: isTaskDone)
+        return .init(taskName: taskName , isTaskDone: isTaskDone, createdAt: createdAt)
     }
 }
