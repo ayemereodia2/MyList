@@ -12,11 +12,13 @@ import Foundation
 struct UserTask:Equatable {
     let taskName:String
     let isTaskDone:Bool
+    let createdAt:Date
 }
 
 extension UserTask {
     init?(entity:UserTaskEntity) {
-        taskName = entity.taskName ?? "" 
+        taskName = entity.taskName 
         isTaskDone = entity.isTaskDone 
+        createdAt = entity.createdAt
     }
 }

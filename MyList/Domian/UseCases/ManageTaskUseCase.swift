@@ -8,10 +8,12 @@
 
 import Foundation
 
+typealias returnedResults = ([UserTask]?)->Void
 
 protocol ManageTaskUseProtocol {
     
     func create(newTask:UserTask,  completionHandler: @escaping (Result<UserTask?, Error>) -> Void)
+    func fetchAllUserTask(completionHandler:@escaping returnedResults)
     
 }
 
@@ -33,6 +35,18 @@ final class DefaultManageTaskUseCase {
                 return
             }else {
             completionHandler(.failure(CoreDataStorageError.newTaskError(description: "an error occured")))
+            }
+        }
+    }
+    
+    func fetchAllUserTask(completionHandler:@escaping returnedResults){
+        
+        self.taskRepository.getAllTask { (tasks) in
+            
+            if let resultSet = tasks {
+                completionHandler(resultSet)
+            }else{
+                completionHandler([UserTask]())
             }
         }
     }

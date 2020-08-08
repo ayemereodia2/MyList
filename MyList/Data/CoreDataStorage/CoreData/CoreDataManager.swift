@@ -26,9 +26,11 @@ class CoreDataManager: UserTaskRepository {
         coreDataStorage.performBackgroundTask { (context) in
             do{
                  let entity = UserTaskEntity(userTaskQuery: newUseCase, insertInto: context) 
-                self.deleteResponse(for: entity, in: context)
+               // self.deleteResponse(for: entity, in: context)
                 
                 try context.save()
+                entity.createdAt = Date()
+                print("\(entity.createdAt) \(entity.taskName) \(entity.isTaskDone)")
                 completionHandler(entity.toDomain(),nil)
 
             }catch {
@@ -79,9 +81,10 @@ class CoreDataManager: UserTaskRepository {
         
         let request:NSFetchRequest<UserTaskEntity> = UserTaskEntity.fetchRequest()
 
-        request.predicate = NSPredicate(format: "%K = %@ AND %K = %d",
-                                        #keyPath(UserTaskEntity.taskName), task.taskName ?? "xc827vc",
-                                        #keyPath(UserTaskEntity.isTaskDone), task.isTaskDone)
+        request.predicate = NSPredicate(format: "%K = %@ AND %K = %d AND %K = %@",
+                                        #keyPath(UserTaskEntity.taskName), task.taskName,
+                                        #keyPath(UserTaskEntity.isTaskDone), task.isTaskDone, #keyPath(UserTaskEntity.createdAt),
+        task.createdAt as NSDate)
         return request
     }
     

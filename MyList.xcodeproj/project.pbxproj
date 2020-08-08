@@ -27,6 +27,9 @@
 		0427D20024B7C65200B93FEA /* UserTaskEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427D1FF24B7C65200B93FEA /* UserTaskEntity+Mapping.swift */; };
 		0427D20224BDAEC300B93FEA /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427D20124BDAEC300B93FEA /* CoreDataManagerTests.swift */; };
 		0453922824C065FB006AD151 /* ManageTaskUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453922724C065FB006AD151 /* ManageTaskUseCaseTests.swift */; };
+		0453922D24C32ABD006AD151 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453922C24C32ABD006AD151 /* TaskListViewController.swift */; };
+		0453922F24C32ADC006AD151 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453922E24C32ADC006AD151 /* TaskListViewModel.swift */; };
+		0453923124C32D07006AD151 /* TaskListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453923024C32D07006AD151 /* TaskListItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		0427D1FF24B7C65200B93FEA /* UserTaskEntity+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserTaskEntity+Mapping.swift"; sourceTree = "<group>"; };
 		0427D20124BDAEC300B93FEA /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 		0453922724C065FB006AD151 /* ManageTaskUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTaskUseCaseTests.swift; sourceTree = "<group>"; };
+		0453922C24C32ABD006AD151 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
+		0453922E24C32ADC006AD151 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		0453923024C32D07006AD151 /* TaskListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +183,7 @@
 		0427D1C624B5D61900B93FEA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0453922924C328E2006AD151 /* TaskList */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -274,6 +281,32 @@
 				0453922724C065FB006AD151 /* ManageTaskUseCaseTests.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		0453922924C328E2006AD151 /* TaskList */ = {
+			isa = PBXGroup;
+			children = (
+				0453922B24C32910006AD151 /* View */,
+				0453922A24C32904006AD151 /* ViewModel */,
+			);
+			path = TaskList;
+			sourceTree = "<group>";
+		};
+		0453922A24C32904006AD151 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0453922E24C32ADC006AD151 /* TaskListViewModel.swift */,
+				0453923024C32D07006AD151 /* TaskListItemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0453922B24C32910006AD151 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0453922C24C32ABD006AD151 /* TaskListViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,13 +441,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0453923124C32D07006AD151 /* TaskListItemViewModel.swift in Sources */,
 				0427D1DF24B78F8400B93FEA /* Task.swift in Sources */,
 				0427D19924B4A5F000B93FEA /* ViewController.swift in Sources */,
+				0453922F24C32ADC006AD151 /* TaskListViewModel.swift in Sources */,
 				0427D1F724B7BB6500B93FEA /* UserTaskEntity+CoreDataProperties.swift in Sources */,
 				0427D1E224B790A200B93FEA /* ManageTaskUseCase.swift in Sources */,
 				0427D1F224B7A48D00B93FEA /* CoreDataStorage.swift in Sources */,
 				0427D1EC24B796CB00B93FEA /* CoreDataPersistentStorage.swift in Sources */,
 				0427D20024B7C65200B93FEA /* UserTaskEntity+Mapping.swift in Sources */,
+				0453922D24C32ABD006AD151 /* TaskListViewController.swift in Sources */,
 				0427D1FD24B7BE8500B93FEA /* CoreDataManager.swift in Sources */,
 				0427D1EF24B7A2A600B93FEA /* CoreDataStorage.xcdatamodeld in Sources */,
 				0427D1F624B7BB6500B93FEA /* UserTaskEntity+CoreDataClass.swift in Sources */,
