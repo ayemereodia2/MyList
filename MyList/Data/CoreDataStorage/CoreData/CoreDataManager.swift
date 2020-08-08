@@ -26,9 +26,11 @@ class CoreDataManager: UserTaskRepository {
         coreDataStorage.performBackgroundTask { (context) in
             do{
                  let entity = UserTaskEntity(userTaskQuery: newUseCase, insertInto: context) 
-                self.deleteResponse(for: entity, in: context)
+               // self.deleteResponse(for: entity, in: context)
                 
                 try context.save()
+                entity.createdAt = Date()
+                print("\(entity.createdAt) \(entity.taskName) \(entity.isTaskDone)")
                 completionHandler(entity.toDomain(),nil)
 
             }catch {

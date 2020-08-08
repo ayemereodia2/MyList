@@ -21,6 +21,7 @@ extension UserTaskEntity {
 
 extension UserTaskEntity {
     func toDomain() -> UserTask {
+        print(taskName,isTaskDone,createdAt)
         return .init(taskName: taskName , isTaskDone: isTaskDone, createdAt: createdAt)
     }
 }
